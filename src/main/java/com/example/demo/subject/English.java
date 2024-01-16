@@ -22,7 +22,7 @@ public class English implements Subject{
 
     @Override
     public String getSubjectName() {
-        return "English";
+        return SubjectType.ENGLISH.type;
     }
 
     @Override

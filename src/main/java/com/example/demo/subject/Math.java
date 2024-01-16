@@ -25,7 +25,7 @@ public class Math implements Subject {
 
     @Override
     public String getSubjectName() {
-        return "Math";
+        return SubjectType.MATH.type;
     }
 
     @Override

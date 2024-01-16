@@ -26,7 +26,7 @@ public class Social implements Subject {
 
     @Override
     public String getSubjectName() {
-        return "Social";
+        return SubjectType.SOCIAL.type;
     }
 
     @Override

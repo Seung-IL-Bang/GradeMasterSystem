@@ -24,7 +24,7 @@ public class Science implements Subject {
 
     @Override
     public String getSubjectName() {
-        return "Science";
+        return SubjectType.SCIENCE.type;
     }
 
     @Override

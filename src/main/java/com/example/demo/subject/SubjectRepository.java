@@ -27,5 +27,21 @@ public class SubjectRepository {
         namedParameterJdbcTemplate.update(sql, sqlParameterSource);
     }
 
+    public void updateAggregateScore(Subject subject) {
+
+        String sql = String.format("""
+                UPDATE aggregate
+                SET %s = :score
+                WHERE student_id =  :studentId
+                """, subject.getSubjectName());
+
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("studentId", subject.getStudentId())
+                .addValue("score", subject.getScore());
+
+        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+    }
+
+
 }
 

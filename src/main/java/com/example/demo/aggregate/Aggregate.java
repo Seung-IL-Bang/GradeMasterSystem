@@ -19,7 +19,7 @@ public class Aggregate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     @OneToOne
     private Student student;
@@ -27,27 +27,32 @@ public class Aggregate {
     @Column(length = 10, nullable = false)
     private String name;
 
+    @Column(nullable = true)
     private short korean;
 
+    @Column(nullable = true)
     private short english;
 
+    @Column(nullable = true)
     private short math;
 
+    @Column(nullable = true)
     private short social;
 
+    @Column(nullable = true)
     private short science;
 
+    @Column(nullable = true)
     private int sum;
 
+    @Column(nullable = true)
     private double avg;
 
-    private boolean state = false; // TODO: Map<Subject, boolean>
-
-    public int getSum() {
+    public int getSum() { // TODO: 최적화
         return korean + english + math + social + science;
     }
 
-    public double getAvg() {
+    public double getAvg() { // TODO: 최적화
         return Math.round((getSum() / 5.0) * 100) / 100.0;
     }
 
@@ -67,11 +72,6 @@ public class Aggregate {
         this.science = requestDto.getScience();
         this.sum = getSum();
         this.avg = getAvg();
-    }
-
-    // TODO
-    public void isAllScoresEntered() {
-
     }
 
 }

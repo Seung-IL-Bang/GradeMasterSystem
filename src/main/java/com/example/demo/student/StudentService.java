@@ -3,6 +3,7 @@ package com.example.demo.student;
 import com.example.demo.aggregate.AggregateRepository;
 import com.example.demo.subject.SubjectFactory;
 import com.example.demo.subject.SubjectRepository;
+import com.example.demo.subject.SubjectType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,9 @@ public class StudentService {
                 .name(name)
                 .build();
 
-        studentRepository.save(student);
+        Student savedStudent = studentRepository.save(student);
+
+        aggregateRepository.save(savedStudent.myAggregate());
     }
 
     public List<Student> examParticipants() {
@@ -42,11 +45,9 @@ public class StudentService {
 
         students.stream()
                 .map(student -> SubjectFactory.createSubject(subjectName, student))
-                .forEach(subjectRepository::insertSubjectScore);
-
-        // TODO: aggregate table 집계
-
-
-
+                .forEach(subject -> {
+                    subjectRepository.insertSubjectScore(subject);
+                    subjectRepository.updateAggregateScore(subject);
+                });
     }
 }
