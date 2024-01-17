@@ -22,33 +22,34 @@ public class Aggregate {
     private int id;
 
     @OneToOne
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
     @Column(length = 10, nullable = false)
     private String name;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private short korean;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private short english;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private short math;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private short social;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private short science;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private int sum;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private double avg;
 
-    public int getSum() { // TODO: 최적화
+    public int getSum() {
         return korean + english + math + social + science;
     }
 

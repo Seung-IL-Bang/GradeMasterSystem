@@ -1,9 +1,7 @@
 package com.example.demo.subject;
 
 import com.example.demo.student.Student;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,10 +15,13 @@ public class Math implements Subject {
 
     @Id
     @OneToOne
+    @JoinColumn(name = "student_id")
     private Student student;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private short score;
 
     @Override

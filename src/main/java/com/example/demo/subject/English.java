@@ -14,10 +14,13 @@ public class English implements Subject{
 
     @Id
     @OneToOne
+    @JoinColumn(name = "student_id")
     private Student student;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private short score;
 
     @Override

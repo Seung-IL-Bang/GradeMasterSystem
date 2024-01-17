@@ -1,10 +1,7 @@
 package com.example.demo.student;
 
 import com.example.demo.aggregate.Aggregate;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +18,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @Column(nullable = false, length = 10)
     private String name;
 
     public Aggregate myAggregate() {
